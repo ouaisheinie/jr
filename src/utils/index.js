@@ -11,3 +11,16 @@ export const cleanObject = (object) => {
   });
   return result;
 };
+
+// 防抖
+export const debounce = (func, delay) => {
+  let timeout;
+  return (...params) => {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+      func(...params);
+    }, delay);
+  };
+};
