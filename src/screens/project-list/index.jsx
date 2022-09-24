@@ -1,6 +1,6 @@
 import { SearchPanel } from "./search-panel"
 import { List } from "./list"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { cleanObject } from "utils"
 import * as qs from "qs"
 
@@ -10,41 +10,32 @@ export const ProjectListScreen = () => {
 	const[users, setUsers] = useState([])
 	const [param, setParam] = useState({
 		name: "", // 项目名称
-		id: "",
+		personId: "",
 	})
 	const debouncedParam = useDebounce(param, 1000)
-	const [personId, setPersonId] = useState("")
 	const [list, setList] = useState([])
-
-	const fetchProjectList = (param = {}) => {
-		const newParam = {
-			...param,
-			personId
-		}
-		fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(newParam))}`).then(async res => {
+	
+	// 获取项目列表 或者更新
+	useEffect(() => {
+		fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`).then(async res => {
 			if (res.ok) {
 				setList(await res.json())
 			}
 		})
-	}
-	
-	// 获取项目列表 或者更新
-	useEffect(() => {
-		fetchProjectList(debouncedParam)
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [debouncedParam, personId]) // personId不会在 useDebounce 里面触发setTimeout 于是就直接执行
+	}, [debouncedParam]) // personId不会在 useDebounce 里面触发setTimeout 于是就直接执行
 
-	useMount(() => {
-		// 获取用户列表
+	const getUsers = useCallback(() => {
 		fetch(`${apiUrl}/users`).then(async res => {
 			if (res.ok) {
 				setUsers(await res.json())
 			}
 		})
-	})
+	}, [])
+
+	useMount(getUsers)
 
 	return <div>
-		<SearchPanel users={users} personId={personId} setPersonId={setPersonId} param={param} setParam={setParam} />
+		<SearchPanel users={users} param={param} setParam={setParam} />
 		<List users={users} list={list} />
 	</div>
 }
@@ -53,7 +44,7 @@ export const ProjectListScreen = () => {
 export const useMount = (callback) => {
 	useEffect(() => {
 		callback()
-	}, [])
+	}, [callback])
 }
 
 export const useDebounce = (value, delay) => {

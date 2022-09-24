@@ -3,8 +3,6 @@ export const SearchPanel = props => {
 	const {
 		param,
 		setParam,
-		personId,
-		setPersonId,
 		users
 	} = props
 
@@ -14,7 +12,10 @@ export const SearchPanel = props => {
 				...param,
 				name: event.target.value
 			})}/>
-			<select value={ personId} onChange={event => setPersonId(event.target.value)}>
+			<select value={ param.personId} onChange={event => setParam({
+				...param,
+				personId: event.target.value
+			})}>
 				{
 					users.map(user => <option value={ user.id } key={user.id}>{ user.name }</option>)
 				}
