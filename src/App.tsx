@@ -1,12 +1,10 @@
-import React from "react";
 import "./App.css";
+import { ProjectListScreen } from "screens/project-list";
 
 function App() {
   return (
     <div className="App">
-      <div>aaa</div>
-      <div>321</div>
-      <div>123</div>
+      <ProjectListScreen />
     </div>
   );
 }
