@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-export const isFalsy = (value: any) => (value === 0 ? false : !value);
+export const isFalsy = (value: unknown): boolean =>
+  value === 0 ? false : !value;
 
 export const cleanObject = (object: Object) => {
   const result = { ...object };
@@ -36,7 +37,8 @@ export const useMount = (callback: () => void) => {
   }, [callback]);
 };
 
-export const useDebounce = (value: any, delay?: number) => {
+// 后面用泛型来规范类型 useState就是用泛型来做的类型推断
+export const useDebounce = <T>(value: T, delay?: number): T => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
