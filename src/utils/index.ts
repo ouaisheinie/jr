@@ -34,7 +34,7 @@ export const cleanObject = (object: Object) => {
 export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
-  }, [callback]);
+  }, []);
 };
 
 // 后面用泛型来规范类型 useState就是用泛型来做的类型推断

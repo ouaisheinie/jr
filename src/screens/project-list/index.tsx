@@ -2,9 +2,7 @@ import { SearchPanel } from "./search-panel";
 import { List } from "./list";
 import { useState, useEffect, useCallback } from "react";
 import { cleanObject, useMount, useDebounce } from "utils";
-import * as qs from "qs";
-
-const apiUrl = process.env.REACT_APP_API_URL;
+import { useHttp } from "utils/http";
 
 export const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
@@ -14,24 +12,15 @@ export const ProjectListScreen = () => {
   });
   const debouncedParam = useDebounce(param, 200);
   const [list, setList] = useState([]);
+  const client = useHttp();
 
   // 获取项目列表 或者更新
   useEffect(() => {
-    fetch(
-      `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
-    ).then(async (res) => {
-      if (res.ok) {
-        setList(await res.json());
-      }
-    });
+    client("projects", { data: cleanObject(debouncedParam) }).then(setList);
   }, [debouncedParam]); // personId不会在 useDebounce 里面触发setTimeout 于是就直接执行
 
   const getUsers = useCallback(() => {
-    fetch(`${apiUrl}/users`).then(async (res) => {
-      if (res.ok) {
-        setUsers(await res.json());
-      }
-    });
+    client("users").then(setUsers);
   }, []);
 
   useMount(getUsers);

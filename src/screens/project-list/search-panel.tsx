@@ -39,7 +39,7 @@ export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
             })
           }
         >
-          <option value={9999} key={9999}>
+          <option value={0} key={0}>
             负责人
           </option>
           {users.map((user) => (
