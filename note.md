@@ -48,3 +48,19 @@ const xiaoming: Partial<Person> = { name: 'xiaoming' } // 这样少一个age也�
 ## emotion/react
 
 /\*_ @jsxImportSource @emotion/react _/ 可以在组件中使用 css 的样式
+
+## ts 定义对象类型
+
+```javascript
+export const cleanObject = (object: { [key: string]: unknown }) => {
+  const result = { ...object };
+
+  Object.keys(result).forEach((key) => {
+    const value = object[key];
+    if (isFalsy(value)) {
+      delete result[key];
+    }
+  });
+  return result;
+};
+```
