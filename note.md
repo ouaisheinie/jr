@@ -44,3 +44,7 @@ const xiaoming: Partial<Person> = { name: 'xiaoming' } // 这样少一个age也�
 
 1. interface 做不到定义联合类型，type 可以做到定义联合类型
 2. interface 也没法实现 Utility type(实用类型)
+
+## emotion/react
+
+/\*_ @jsxImportSource @emotion/react _/ 可以在组件中使用 css 的样式
