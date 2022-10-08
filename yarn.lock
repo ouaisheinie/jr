@@ -8906,12 +8906,13 @@ react-query-devtools@^2.6.3:
   dependencies:
     match-sorter "^4.1.0"
 
-react-query@3.5.10:
-  version "3.5.10"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.5.10.tgz#c6bc348dcea932b59035e93ad4ab5d98d4234fd1"
-  integrity sha512-gYW9xgRdCoEXwvnXw+r4hxYkD2/csIc/NGdEjFgjXSd04yiR77b8mFW+qNVTcFSoH0NUjEcLt94OLWuOK02oGA==
+react-query@3.39.2, react-query@^3.5.10:
+  version "3.39.2"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.2.tgz#9224140f0296f01e9664b78ed6e4f69a0cc9216f"
+  integrity sha512-F6hYDKyNgDQfQOuR1Rsp3VRzJnWHx6aRnnIZHMNGGgbL3SBgpZTDg8MQwmxOgpCAoqZJA+JSNCydF1xGJqKOCA==
   dependencies:
     "@babel/runtime" "^7.5.5"
+    broadcast-channel "^3.4.1"
     match-sorter "^6.0.2"
 
 react-query@^2.26.3:
@@ -8920,15 +8921,6 @@ react-query@^2.26.3:
   integrity sha512-sXGG0gh1ah11AcfptYOCRpGDoYMnssq6riQUpQaLSM2EOodVkexp3zNLk1MFDgfRGuXQst40Tnu17oNwni66aA==
   dependencies:
     "@babel/runtime" "^7.5.5"
-
-react-query@^3.5.10:
-  version "3.39.2"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.2.tgz#9224140f0296f01e9664b78ed6e4f69a0cc9216f"
-  integrity sha512-F6hYDKyNgDQfQOuR1Rsp3VRzJnWHx6aRnnIZHMNGGgbL3SBgpZTDg8MQwmxOgpCAoqZJA+JSNCydF1xGJqKOCA==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    broadcast-channel "^3.4.1"
-    match-sorter "^6.0.2"
 
 react-refresh@^0.11.0:
   version "0.11.0"
