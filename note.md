@@ -38,7 +38,7 @@ type Person = {
 const xiaoming: Partial<Person> = { name: 'xiaoming' } // 这样少一个age也不报错了
 ```
 
-很多情况下，类型别名和 interface 是可以互换的
+很多情况下，类型别名 type 和 interface 是可以互换的
 
 区别
 

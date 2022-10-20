@@ -1,7 +1,7 @@
 import { Table } from "antd";
 import dayjs from "dayjs";
 import { User } from "screens/project-list/search-panel";
-
+import { TableProps } from "antd/es/table";
 interface Project {
   id: string;
   name: string;
@@ -11,16 +11,17 @@ interface Project {
   created: number;
 }
 
-interface ListProps {
-  list: Project[];
+interface ListProps extends TableProps<Project> {
   users: User[];
 }
 
-export const List = ({ list, users }: ListProps) => {
+type PropsType = Omit<ListProps, "users">;
+
+export const List = ({ users, ...props }: ListProps) => {
   return (
     <Table
+      rowKey={"id"}
       pagination={false}
-      dataSource={list}
       columns={[
         {
           title: "名称",
@@ -55,6 +56,7 @@ export const List = ({ list, users }: ListProps) => {
           },
         },
       ]}
+      {...props}
     />
   );
 };
