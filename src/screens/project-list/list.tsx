@@ -2,7 +2,7 @@ import { Table } from "antd";
 import dayjs from "dayjs";
 import { User } from "screens/project-list/search-panel";
 import { TableProps } from "antd/es/table";
-interface Project {
+export interface Project {
   id: string;
   name: string;
   personId: string;
