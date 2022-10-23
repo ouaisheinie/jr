@@ -23,7 +23,12 @@ export const RegisterScreen = ({
       onError(new Error("请确认两次输入的密码相同"));
       return;
     }
-    run(register(values).catch(onError));
+
+    try {
+      run(register(values));
+    } catch (error: any) {
+      onError(error);
+    }
   };
 
   return (

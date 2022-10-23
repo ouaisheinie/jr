@@ -11,8 +11,15 @@ export const LoginScreen = ({
   const { login } = useAuth();
   const { run, isLoading } = useAsync(undefined, { throwOnError: true });
   // 点击登录
-  const handleSubmit = (values: { username: string; password: string }) => {
-    run(login(values).catch(onError));
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await run(login(values));
+    } catch (error: any) {
+      onError(error);
+    }
   };
 
   return (

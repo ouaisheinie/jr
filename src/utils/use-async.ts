@@ -27,12 +27,15 @@ export const useAsync = <D>(
     ...initialState,
   });
 
-  const setData = (data: D) =>
-    setState({
-      data,
-      stat: "success",
-      error: null,
-    });
+  const setData = (data: D) => {
+    if (data !== undefined) {
+      setState({
+        data,
+        stat: "success",
+        error: null,
+      });
+    }
+  };
 
   const setError = (error: Error) =>
     setState({
