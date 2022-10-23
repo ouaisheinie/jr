@@ -1,7 +1,7 @@
 import { SearchPanel } from "./search-panel";
 import { List } from "./list";
 import { useState, useCallback } from "react";
-import { useMount, useDebounce } from "utils";
+import { useMount, useDebounce, useDocumentTitle } from "utils";
 import { useHttp } from "utils/http";
 import styled from "@emotion/styled";
 import { Typography } from "antd";
@@ -17,14 +17,7 @@ export const ProjectListScreen = () => {
   const debouncedParam = useDebounce(param, 200);
   const { isLoading, error, data: list } = useProjects(debouncedParam);
   const { data: users } = useUsers();
-  /* 	
-		const client = useHttp()
-		const getUsers = useCallback(() => {
-			client("users").then(setUsers);
-		}, []);
-
-		useMount(getUsers); 
-	*/
+  useDocumentTitle("项目列表", false);
 
   return (
     <Container>
