@@ -15,6 +15,7 @@ export const ProjectListScreen = () => {
     personId: "",
   });
 
+  // 基本类型可以放到依赖里，组件状态可以放到依赖里，非组件状态的对象，绝不可以放到依赖里。
   const [keys, setKeys] = useState<("name" | "personId")[]>([
     "name",
     "personId",
