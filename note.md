@@ -64,3 +64,5 @@ export const cleanObject = (object: { [key: string]: unknown }) => {
   return result;
 };
 ```
+
+## id-select 组件里面有能学习的
