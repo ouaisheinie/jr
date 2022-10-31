@@ -4,9 +4,9 @@ import { User } from "screens/project-list/search-panel";
 import { TableProps } from "antd/es/table";
 import { Link } from "react-router-dom";
 export interface Project {
-  id: String;
+  id: number;
   name: string;
-  personId: string;
+  personId: number;
   pin: string;
   organization: string;
   created: number;

@@ -66,3 +66,7 @@ export const cleanObject = (object: { [key: string]: unknown }) => {
 ```
 
 ## id-select 组件里面有能学习的
+
+## as const 后,类型里面就是定值了
+
+## Partial 类型 要去看看
