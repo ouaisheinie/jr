@@ -70,3 +70,21 @@ export const cleanObject = (object: { [key: string]: unknown }) => {
 ## as const 后,类型里面就是定值了
 
 ## Partial 类型 要去看看
+
+## useEffect 一定要在顶层，在 dom 中类似 onChange，onClick 事件等调用 hook 时，可以在 hook 里返回要用的方法，然后再到顶层去获取后再使用
+
+-. util/projects 的 useEditProjects 结合 project-list/list.tsx 有柯里化的应用
+-. useState 传入函数的时候，会直接运行函数(具体原因是 react 的 initialState 这个惰性初始的特性，react 会认为我们传入函数是直接执行的，不会去保存这个函数读索引)。可以像下面这样用，就可以保存住函数了。
+
+```typescript
+const [callback, setCallback] = useState(() => () => {
+  alert("init");
+});
+
+setCallback(() => () => alert("update"));
+```
+
+上面这样写就可以保存函数了。
+
+-. 也可以用 useRef 来保存函数，useRef 定义的值不是组件的状态，只是一个普通的变量，更新它不会让组件重新渲染。
+-. 适当使用乐观根性
