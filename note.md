@@ -87,4 +87,7 @@ setCallback(() => () => alert("update"));
 上面这样写就可以保存函数了。
 
 -. 也可以用 useRef 来保存函数，useRef 定义的值不是组件的状态，只是一个普通的变量，更新它不会让组件重新渲染。
--. 适当使用乐观根性
+-. 适当使用乐观更新
+-. 一个非状态的非基本类型，是不可以放在 useEffect 依赖里的，不然会无限循环。
+-. useCallback 是一个特殊版本的 useMemo。跟 useMemo 做的事情是一样的。
+-. setState(prevState => ({ ...prevState, stat })), 在 user-async 里面有这种写法。prevState，此时此刻的 state
