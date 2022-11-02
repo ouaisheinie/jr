@@ -89,5 +89,9 @@ setCallback(() => () => alert("update"));
 -. 也可以用 useRef 来保存函数，useRef 定义的值不是组件的状态，只是一个普通的变量，更新它不会让组件重新渲染。
 -. 适当使用乐观更新
 -. 一个非状态的非基本类型，是不可以放在 useEffect 依赖里的，不然会无限循环。
--. useCallback 是一个特殊版本的 useMemo。跟 useMemo 做的事情是一样的。
+-. useCallback 是一个特殊版本的 useMemo。跟 useMemo 做的事情是一样的。非基本类型使用到 useEffect 的依赖中时，就要用 useMemo，useCallback(专门作用于函数)来作用于这些值，让他们不要在每次渲染时都进行更新，导致页面重复渲染。
 -. setState(prevState => ({ ...prevState, stat })), 在 user-async 里面有这种写法。prevState，此时此刻的 state
+
+## 状态管理方法
+
+1. 如果你只是想避免层层传递一些属性，组件组合 component composition 有时候是一个比 context 更好的解决方案。
