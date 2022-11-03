@@ -92,6 +92,6 @@ setCallback(() => () => alert("update"));
 -. useCallback 是一个特殊版本的 useMemo。跟 useMemo 做的事情是一样的。非基本类型使用到 useEffect 的依赖中时，就要用 useMemo，useCallback(专门作用于函数)来作用于这些值，让他们不要在每次渲染时都进行更新，导致页面重复渲染。
 -. setState(prevState => ({ ...prevState, stat })), 在 user-async 里面有这种写法。prevState，此时此刻的 state
 
-## 状态管理方法
+## 状态管理方法 主义 component composition
 
-1. 如果你只是想避免层层传递一些属性，组件组合 component composition 有时候是一个比 context 更好的解决方案。
+1. 如果你只是想避免层层传递一些属性，组件组合 component composition 有时候是一个比 context 更好的解决方案。使用 component composition 再也不用担心子组件和后代组件怎么消费需要层层传递的对象了,就解耦了。
